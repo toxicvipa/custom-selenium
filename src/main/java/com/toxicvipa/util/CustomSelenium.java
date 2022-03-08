@@ -82,14 +82,14 @@ public class CustomSelenium {
         writeElementByXpath(0, xpath, text);
     }
 
-    public void getBrowser(int id) {
+    public WebDriver getBrowser(int id) {
         if(browsers.size() <= id) {
             throw new RuntimeException("ID: " + id + ", browser with that ID does not exist!");
         }
         return browsers.get(id);
     }
 
-    public void getBrowser() {
+    public WebDriver getBrowser() {
         return browsers.get(0);
     }
 }
