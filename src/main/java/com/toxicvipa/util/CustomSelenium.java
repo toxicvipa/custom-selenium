@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -24,11 +25,16 @@ public class CustomSelenium {
 
     public int createBrowser() {
         try {
-            WebDriver driver = new FirefoxDriver();
+            System.out.println("enter create");
+            FirefoxOptions options = new FirefoxOptions();
+            options.setHeadless(false);
+            options.addPreference("xpinstall.signatures.required", false);
+            WebDriver driver = new FirefoxDriver(options);
             browsers.add(driver);
             Thread.sleep(5000);
             return browsers.size() - 1;
         } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException("Geckodriver not found: " + driverLocation);
         }
     }
